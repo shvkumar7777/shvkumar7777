@@ -1,0 +1,123 @@
+class DoublyLinkedList {
+  constructor(value) {
+    this.head = {
+      value: value,
+      next: null,
+      previous : null
+    };
+    this.tail = this.head;
+    this.length = 1;
+  }
+
+  append(value) {
+    const newNode = {
+      value: value,
+      next: null,
+      previous: null
+    };
+    this.tail.next = newNode;
+    newNode.previous = this.tail;
+    this.tail = newNode;
+    this.length++;
+    return this;
+  }
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null
+    };
+    newNode.next = this.head;
+    this.head.previous = newNode;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+  printList() {
+    let CurrentNode = this.head;
+    let list = [];
+    while (CurrentNode !== null) {
+      list.push(CurrentNode.value);
+      CurrentNode = CurrentNode.next;
+    }
+    return list;
+  }
+
+  traverseToIndex(index) {
+    if(index === undefined) return null;
+  if(index<0){return this.head}
+  if(index>this.length){return this.tail}
+  
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  
+  insert(index,value){
+  //check the params
+  if(index>=this.length){this.append(value); return this;}
+    
+  if(index<0){this.prepend(value); return this;}
+    
+  let newNode={
+  value :value,
+  next : null,
+    previous :null
+  }
+  let leader = this.traverseToIndex(index-1);
+  let follower = leader.next;
+    leader.next = newNode;
+    newNode.next = follower;
+    newNode.previous = leader;
+    follower.previous = newNode;  
+   this.length++;
+  return this;
+  }
+  
+  delete(index){
+  
+  let leader = this.traverseToIndex(index-1);
+  let deletedNode = leader.next;
+  let follower = deletedNode.next;
+  follower.previous = leader;
+  leader.next = follower;
+  return this;
+  }
+  
+  reverseList(){
+    let currentnode = this.tail;
+    let reverse = [];
+    while(currentnode!=null)
+      {
+        reverse.push(currentnode.value);
+        currentnode = currentnode.previous;
+        
+      }
+    return reverse;
+  }
+}
+
+const linkedlist = new DoublyLinkedList(10);
+linkedlist.append(20);
+linkedlist.append(30);
+linkedlist.append(60);
+linkedlist.prepend(30);
+linkedlist.prepend(50);
+linkedlist.insert(3,90);
+console.log(linkedlist.traverseToIndex(5).value);
+console.log(linkedlist.printList());
+console.log(linkedlist.reverseList());
+linkedlist.delete(1);
+console.log(linkedlist.printList());
+console.log(linkedlist.reverseList());
+
+
+
+// /* console.log(linkedlist.delete(2));
+// console.log(linkedlist.delete(2)); */
+
+// /* console.log(linkedlist.traverseToIndex(2).value); */
+
