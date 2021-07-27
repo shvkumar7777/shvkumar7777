@@ -1,0 +1,94 @@
+class LinkedList {
+  constructor(value) {
+    this.head = {
+      value: value,
+      next: null
+    };
+    this.tail = this.head;
+    this.length = 1;
+  }
+
+  append(value) {
+    const newNode = {
+      value: value,
+      next: null
+    };
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return this;
+  }
+  prepend(value) {
+    const newNode = {
+      value: value,
+      next: null
+    };
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+  printList() {
+    let CurrentNode = this.head;
+    let list = [];
+    while (CurrentNode !== null) {
+      list.push(CurrentNode.value);
+      CurrentNode = CurrentNode.next;
+    }
+    return list;
+  }
+
+  traverseToIndex(index) {
+  if(index<0){return this.head}
+  if(index>this.length){return this.tail}
+  
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      currentNode = currentNode.next;
+      counter++;
+    }
+    return currentNode;
+  }
+  
+  insert(index,value){
+  //check the params
+  if(index>=this.length){this.append(value); return this;}
+    
+  if(index<0){this.prepend(value); return this;}
+    
+  let newNode={
+  value :value,
+  next : null
+  }
+  let previousnode = this.traverseToIndex(index-1);
+  let presentnode = previousnode.next;
+  newNode.next = presentnode;
+  previousnode.next = newNode;
+/* 	presentnode = newNode
+	 */  
+   this.length++;
+  return this;
+  }
+  
+  delete(index){
+  
+  let previousnode = this.traverseToIndex(index-1);
+  let deletednode = previousnode.next;
+  previousnode.next = deletednode.next;
+  return this;
+  }
+}
+
+const linkedlist = new LinkedList(10);
+linkedlist.append(20);
+linkedlist.append(40);
+linkedlist.prepend(30);
+linkedlist.prepend(50);
+linkedlist.insert(-20,80);
+console.log(linkedlist.traverseToIndex(20).value);
+/* console.log(linkedlist.delete(2));
+console.log(linkedlist.delete(2)); */
+console.log(linkedlist.printList());
+/* console.log(linkedlist.traverseToIndex(2).value); */
+
