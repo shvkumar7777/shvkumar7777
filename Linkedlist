@@ -78,6 +78,11 @@ class LinkedList {
   previousnode.next = deletednode.next;
   return this;
   }
+  
+  reverse(){
+  let head = this.tail;
+  let reverse = linkedlist;
+  let 
 }
 
 const linkedlist = new LinkedList(10);
