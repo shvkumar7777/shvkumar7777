@@ -1,0 +1,45 @@
+/**
+ * @param {string} jewels
+ * @param {string} stones
+ * @return {number}
+ */
+var numJewelsInStones = function(jewels, stones) {
+    //since All the characters of jewels are unique., i can use set, which does not accept duplicates
+    //using arrow functions 
+    // using foreach loop over arrays and sets
+    let set = new Set();    
+    let count = 0
+    
+    jewels.split('').forEach(element =>set.add(element));
+		stones.split('').forEach(element =>{
+    if(set.has(element))
+      count ++;
+    });
+    return count;
+    
+};
+console.log(numJewelsInStones('aACv','AABBcv'));
+
+/**
+ * @param {string} jewels
+ * @param {string} stones
+ * @return {number}
+ */
+var numJewelsInStones = function(jewels, stones) {
+    //since All the characters of jewels are unique., 
+  //i can use set, which does not accept duplicates
+    let set = new Set();
+    let jewe = jewels.split('');
+    let stone = stones.split('');
+    let count = 0;
+    for(let i=0;i<jewe.length;i++){
+        set.add(jewe[i]);
+    }
+    console.log(set);
+    for(let i=0;i<stones.length;i++){
+			if(set.has(stone[i]))
+      count ++;
+    }
+    return count;
+    
+};
