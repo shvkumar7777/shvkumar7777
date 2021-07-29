@@ -1,0 +1,29 @@
+/**
+ * @param {string} address
+ * @return {string}
+ */
+var defangIPaddr = function(address) {
+    
+    // the brute force am thinkinh i s
+    //convert the string into an array by splitting  based on the dot(.), so that it will return an arry of strings/characters
+    // now join the array adding a [.]
+    //one more solution is to use the regular expression where replace the character . with [.]
+    
+    return address.replaceAll('\.','[.]')
+   
+};
+
+/**
+ * @param {string} address
+ * @return {string}
+ */
+var defangIPaddr = function(address) {
+    
+    // the brute force am thinkinh i s
+    //convert the string into an array by splitting  based on the dot(.)
+    //loop through every item in the aaray and concat with the rewuired one
+    //and at the last convert back to a string
+    
+    return address.split('.').join('[.]')
+   
+};
