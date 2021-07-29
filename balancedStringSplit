@@ -1,0 +1,29 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+
+//using stack data strcture
+var balancedStringSplit = function(s) {
+    let count = 0;
+    let match = 0;
+    let sarray = s.split('');
+    const stack = [];
+    
+    for(i=0;i<s.length;i++){
+        
+        if(sarray[i]==='R'){
+            stack.push(sarray[i]);
+            count++;
+        }
+            
+        if(sarray[i]==='L'){  
+            stack.pop();
+            count--;
+         }
+                  
+        if(count === 0)
+            match++;
+    }
+    return match;    
+};
