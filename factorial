@@ -1,0 +1,11 @@
+let factorial = function(n){
+if(n===2){
+return 2
+}
+let somevalue = factorial(n-1);
+return n * somevalue
+}
+
+console.log(factorial(5));
+
+factorial using recurion 
