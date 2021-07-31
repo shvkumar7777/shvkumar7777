@@ -1,0 +1,34 @@
+let selectionsort = function(nums) {
+  //selection, paatern is --- each time try to fins the small value and swap it with the first index and then with next index and so on 
+
+  let len = nums.length;
+  let smallest = nums[0];
+  let smallestindex ;
+  for (let i = 0; i < len; i++) {
+         smallest = nums[i];
+          console.log(smallest + "assume smallest");
+    for (let j = i + 1; j < len; j++) {
+					
+          
+      if (smallest > nums[j]) {
+        smallest = nums[j];
+        console.log(smallest + "smallest eleement");
+     		smallestindex = nums.indexOf(smallest);
+        console.log(smallestindex + "smallestindex");
+
+      }
+      /* console.log(smallest+"smallest") */
+      
+
+    }
+    /* console.log(smallest + "smallestelement") */
+
+    let temp = smallest ;
+    smallest =  nums[i] ;
+    nums[smallestindex] = temp;
+     console.log(nums[smallestindex] + "nums[smallestindex]");
+    
+  }
+  return nums;
+}
+console.log(selectionsort([5, 1, 4, 7, 2, 9, 23]));
