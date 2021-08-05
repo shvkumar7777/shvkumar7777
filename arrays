@@ -1,0 +1,36 @@
+const array = [1, 2, 3, 4, 5]; //mutuable - we can modify the item in the array but can not re assign an entire array if uses const
+array.pop();
+array.push("item.");
+array.shift();
+array.unshift("values");
+
+//console.log(array);
+//iterate through an array
+
+//normal function
+array.forEach(function(item) {
+  console.log(item);
+});
+//arrow function ES6
+array.forEach(item => {
+  console.log(item)
+});
+//using for of ES6
+for(let item of array){
+console.log(item);
+}
+for(let item of array){
+console.log(item);
+}
+
+for(let item of array.entries()){
+console.log(item);
+}
+
+for(let item of array.values()){
+console.log(item);
+}
+
+for(let item of array.keys()){
+console.log(item);
+}
